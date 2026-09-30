@@ -1,0 +1,30 @@
+# Web-app manifest (installable app)
+AddType application/manifest+json .webmanifest
+
+Options -MultiViews -Indexes
+RewriteEngine On
+
+# HTTPS redirect (enable in production)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Security headers
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "SAMEORIGIN"
+
+# Deny access to sensitive files
+<FilesMatch "\.(env|log|sql|md|lock|json|xml)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Allow sitemap.xml and robots.txt
+<FilesMatch "^(sitemap\.xml|robots\.txt)$">
+    Order deny,allow
+    Allow from all
+</FilesMatch>
+
+# Route all requests to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L]

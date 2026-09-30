@@ -1,0 +1,26 @@
+{
+    "data": [
+        {
+            "id": "18000000001",
+            "author_id": "42",
+            "created_at": "2026-09-24T11:22:21+0000",
+            "text": "Chennai AI Builders Meetup [T-165212] is on Oct 13, 2026 6 PM at IIT Madras Research Park, Chennai. Talks + networking. Register: https://forms.gle/AIBtest123",
+            "entities": {
+                "urls": [
+                    {
+                        "expanded_url": "https://forms.gle/AIBtest123"
+                    }
+                ]
+            }
+        }
+    ],
+    "includes": {
+        "users": [
+            {
+                "id": "42",
+                "username": "chennaiaibuilders",
+                "name": "Chennai AI Builders"
+            }
+        ]
+    }
+}

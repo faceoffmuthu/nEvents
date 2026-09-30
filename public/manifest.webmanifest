@@ -1,0 +1,24 @@
+{
+  "name": "N Events — event discovery across India",
+  "short_name": "N Events",
+  "description": "Discover tech meetups, startup events, workshops, rides and cultural events across India.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#F6EFE4",
+  "theme_color": "#2A1B12",
+  "lang": "en-IN",
+  "categories": ["events", "lifestyle", "social"],
+  "icons": [
+    { "src": "images/brand/favicon-192.png",       "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "images/brand/icon-512.png",          "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "images/brand/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "This weekend", "url": "events/this-weekend" },
+    { "name": "Post an event", "url": "events/create" },
+    { "name": "Saved events",  "url": "my-events/saved" }
+  ]
+}

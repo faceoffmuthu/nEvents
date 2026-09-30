@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img" aria-label="N EVENTS event artwork">
+  <defs>
+    <radialGradient id="gdefault" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="rgba(75,46,30,0.13)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <pattern id="pdefault" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#4B2E1E" fill-opacity="0.07"/>
+    </pattern>
+  </defs>
+
+  <rect width="800" height="450" fill="#F6EFE4"/>
+  <rect width="800" height="450" fill="url(#pdefault)"/>
+  <circle cx="639" cy="109" r="260" fill="url(#gdefault)"/>
+  <circle cx="90" cy="380" r="180" fill="rgba(75,46,30,0.13)" opacity="0.5"/>
+
+  <rect x="684" y="334" width="76" height="76" rx="20" fill="rgba(75,46,30,0.21)" stroke="#4B2E1E" stroke-width="1.5"/>
+  <g transform="translate(722,372)">
+    
+            <path d='M -8 -26 L 12 -26 L -2 -2 L 12 -2 L -14 26 L -4 -2 L -16 -2 Z' fill='#4B2E1E'/>
+  </g>
+
+  <rect x="40" y="352" width="6" height="46" fill="#4B2E1E"/>
+  <text x="60" y="394" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="800"
+        fill="#4B2E1E" letter-spacing="1">N EVENTS</text>
+</svg>

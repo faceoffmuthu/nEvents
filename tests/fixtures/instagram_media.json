@@ -1,0 +1,54 @@
+{
+    "data": [
+        {
+            "id": "1790001",
+            "username": "chennai_ai_builders",
+            "media_type": "IMAGE",
+            "media_url": "https://scontent.example/1.jpg",
+            "permalink": "https://www.instagram.com/p/TESTAIB01/",
+            "timestamp": "2026-09-23T11:22:21+0000",
+            "caption": "Chennai AI Builders Meetup [T-165212]\n\n📅 13 Oct 2026 | 6:00 PM – 9:00 PM\n📍 Venue: IIT Madras Research Park, Taramani, Chennai\n\nLightning talks on GenAI agents + open networking. Free entry, limited seats!\nRegister: https://forms.gle/AIBtest123 #ai #chennai"
+        },
+        {
+            "id": "1790002",
+            "username": "chennai_ai_builders",
+            "media_type": "IMAGE",
+            "media_url": "https://scontent.example/2.jpg",
+            "permalink": "https://www.instagram.com/p/TESTAIB02/",
+            "timestamp": "2026-09-24T11:22:21+0000",
+            "caption": "What an amazing evening at our last meetup! Thanks to everyone who attended and made it special. Highlights from the talks coming soon. #meetup #workshop"
+        },
+        {
+            "id": "1790003",
+            "username": "chennai_ai_builders",
+            "media_type": "IMAGE",
+            "permalink": "https://www.instagram.com/p/TESTAIB03/",
+            "timestamp": "2026-08-16T11:22:21+0000",
+            "caption": "GenAI Hack Night [T-165212]\nDate: 5 September 2026, 5 PM\nVenue: Workafella, Teynampet, Chennai\nRegister now at https://forms.gle/hacknight — limited seats"
+        },
+        {
+            "id": "1790004",
+            "username": "chennai_ai_builders",
+            "media_type": "IMAGE",
+            "permalink": "https://www.instagram.com/p/TESTAIB04/",
+            "timestamp": "2026-09-24T11:22:21+0000",
+            "caption": "We're hiring! Join our team as a Community Manager for events, meetups and workshops. Send your CV — register interest at https://forms.gle/jobs"
+        },
+        {
+            "id": "1790005",
+            "username": "kovai_founders",
+            "media_type": "IMAGE",
+            "permalink": "https://www.instagram.com/p/TESTKF05/",
+            "timestamp": "2026-09-24T11:22:21+0000",
+            "caption": "Founders Coffee Circle [T-165212]\nJoin us this Saturday at 7 AM for an informal networking session.\nVenue: Brew Room, RS Puram, Coimbatore\nRSVP: https://lu.ma/founders-coffee"
+        },
+        {
+            "id": "1790006",
+            "username": "chennai_ai_builders",
+            "media_type": "IMAGE",
+            "permalink": "https://www.instagram.com/p/TESTAIB06/",
+            "timestamp": "2026-09-24T11:22:21+0000",
+            "caption": "Flat 40% off on all workshop recordings this week only! Buy now, limited stock. Use code AI40 — event bundle on sale."
+        }
+    ]
+}

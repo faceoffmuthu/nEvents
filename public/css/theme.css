@@ -1,0 +1,277 @@
+/* ============================================================
+   N Events — Brand Theme (single source of truth)
+   ------------------------------------------------------------
+   Every color, shadow, radius and font used by the site comes from
+   here. Change the brand by editing THIS file only.
+
+   Premium cream & brown palette (2026-09-24):
+     Espresso #2A1B12   headings, dark sections (hero, footer, feature strips)
+     Brown    #4B2E1E   primary buttons, logo
+     Mocha    #7A5238   secondary/muted text, button hover
+     Caramel  #B08256   accent lines, icons, saved heart (graphics only on light)
+     Gold     #C9A36A   highlights on dark, Free/Featured chips (with Espresso text)
+     Sand     #E9DCC8 · Cream #F6EFE4 · Ivory #FBF8F2   surfaces
+   Contrast (WCAG): Espresso/Cream 14.5 · Brown/Cream 10.8 · Mocha/Sand 5.0 ·
+   Gold/Espresso 7.1 · Ivory/Brown 11.6 · Ivory/Mocha 6.4 — every text pair ≥ 4.5.
+   ============================================================ */
+
+:root {
+  /* ── Palette ─────────────────────────────────────────────── */
+  --palette-espresso:      #2A1B12;
+  --palette-brown:         #4B2E1E;
+  --palette-mocha:         #7A5238;
+  --palette-sand:          #E9DCC8;
+  --palette-cream:         #F6EFE4;
+  --palette-ivory:         #FBF8F2;
+  --accent-caramel:        #B08256;
+  --accent-gold:           #C9A36A;
+
+  /* ── Brand roles ─────────────────────────────────────────── */
+  --brand-primary:         #4B2E1E;   /* Brown: primary buttons, links, icons — 11.6:1 on Ivory */
+  --brand-primary-rgb:     75, 46, 30;
+  --brand-primary-hover:   #4B2E1E;   /* buttons change fill on hover (Mocha), not shade */
+  --brand-primary-active:  #2A1B12;
+  --brand-primary-light:   #4B2E1E;
+  --brand-primary-soft:    #EFE3D1;   /* selected states, icon tiles */
+  --brand-primary-subtle:  #F5EDE1;   /* hover backgrounds */
+
+  --brand-secondary:       #F6EFE4;   /* Cream */
+  --brand-secondary-rgb:   246, 239, 228;
+  --brand-secondary-hover: #EFE5D6;
+  --brand-secondary-soft:  #FBF8F2;
+
+  --brand-accent:          #B08256;   /* Caramel: lines, icons, decoration (not small text on light) */
+  --brand-accent-rgb:      176, 130, 86;
+  --brand-accent-strong:   #4B2E1E;   /* accent-colored TEXT on light = Brown */
+  --brand-accent-soft:     #C9A36A;   /* Gold chips (Featured / Free) with Espresso text 7.1:1 */
+
+  --brand-dark:            #2A1B12;   /* footer / dark sections */
+  --brand-darker:          #1E130C;
+
+  /* ── Neutrals ────────────────────────────────────────────── */
+  --bg-page:               #FBF8F2;   /* Ivory */
+  --bg-surface:            #FFFDF9;   /* cards, inputs: warm white */
+  --bg-subtle:             #F2E9DC;   /* table heads, wells, Sand sections */
+  --bg-muted:              #E9DCC8;
+
+  --text-primary:          #2A1B12;   /* 15.7:1 on Ivory */
+  --text-primary-rgb:      42, 27, 18;
+  --text-secondary:        #5C4130;   /* 9.0:1 */
+  --text-muted:            #7A5238;   /* 6.4:1 on Ivory, 5.0:1 on Sand */
+  --text-on-brand:         #FBF8F2;   /* Ivory on Brown */
+  --text-on-dark:          #F6EFE4;
+  --text-on-dark-muted:    #C9B8A6;   /* 8.6:1 on Espresso */
+
+  --border-color:          #E7DCCB;
+  --border-strong:         #D4C3AB;
+
+  /* ── Semantic (status meaning, kept distinct from the brand) ── */
+  --success:               #2F5E3A;   --success-rgb: 47, 94, 58;    --success-soft: #E6EFE5;
+  --warning:               #7A4A06;   --warning-rgb: 201, 163, 106; --warning-soft: #F6ECD8;
+  --danger:                #9B2C20;   --danger-rgb:  155, 44, 32;   --danger-soft:  #F8E4DF;
+
+  /* ── Effects ─────────────────────────────────────────────── */
+  --grad-brand:  linear-gradient(135deg, #B08256 0%, #C9A36A 100%);
+  --grad-hero:   radial-gradient(1100px 520px at 85% -10%, rgba(201, 163, 106, .10) 0%, transparent 60%),
+                 radial-gradient(800px 460px at -10% 110%, rgba(176, 130, 86, .08) 0%, transparent 60%);
+  --shadow-sm:   0 1px 2px rgba(42, 27, 18, .04), 0 2px 6px rgba(42, 27, 18, .05);
+  --shadow-md:   0 10px 30px rgba(42, 27, 18, .08), 0 2px 6px rgba(42, 27, 18, .04);
+  --shadow-lg:   0 24px 60px rgba(42, 27, 18, .14), 0 4px 12px rgba(42, 27, 18, .06);
+  --focus-ring:  0 0 0 2px #FFFDF9, 0 0 0 4px #4B2E1E;
+
+  /* ── Typography ──────────────────────────────────────────── */
+  --font-sans:    'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-serif:   'Fraunces', 'Georgia', 'Times New Roman', serif;   /* large headings only */
+  --font-display: 'Montserrat', 'Inter', 'Segoe UI', sans-serif;   /* the brand name (logo wordmark) */
+  --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+
+  /* ── Shape & motion ──────────────────────────────────────── */
+  --radius-sm: 10px;
+  --radius:    16px;
+  --radius-lg: 22px;
+  --radius-xl: 30px;
+  --transition:      all .25s cubic-bezier(.4, 0, .2, 1);
+  --transition-slow: all .5s cubic-bezier(.4, 0, .2, 1);
+
+  --bs-link-color-rgb:     75, 46, 30;
+
+  /* primary-button hover: fill changes to Mocha (Ivory text 6.4:1) */
+  --btn-hover-bg:          #7A5238;
+  --btn-hover-text:        #FBF8F2;
+}
+
+/* ── Section bands ─────────────────────────────────────────────
+   Mostly light: Ivory (.band-cream) and soft Sand (.band-sand) sections;
+   Espresso only for the hero (.band-hero), the footer and feature strips
+   (.band-dark). Each dark band re-points the tokens so every component and
+   inline style inside it adapts; cards, chips, forms and dialogs inside a
+   dark band ("surfaces" below) keep the light scheme.
+     on Espresso: text Cream 14.5, Sand 12.3, muted #C9B8A6 8.6, links/buttons Gold 7.1 */
+.band-cream { background: var(--palette-ivory); }
+.band-sand  { background: #F2E9DC; }
+
+.band-dark, .band-hero {
+  --brand-primary:         #C9A36A;   /* Gold buttons (Espresso text), links, icons */
+  --brand-primary-rgb:     201, 163, 106;
+  --brand-primary-hover:   #F6EFE4;
+  --brand-primary-active:  #F6EFE4;
+  --brand-primary-light:   #C9A36A;
+  --brand-primary-soft:    rgba(201, 163, 106, .14);
+  --brand-primary-subtle:  rgba(246, 239, 228, .07);
+  --brand-accent:          #C9A36A;
+  --brand-accent-strong:   #C9A36A;
+  --brand-accent-soft:     rgba(201, 163, 106, .18);
+  --bg-page:               #2A1B12;
+  --bg-surface:            rgba(246, 239, 228, .07);
+  --bg-subtle:             rgba(246, 239, 228, .05);
+  --bg-muted:              rgba(246, 239, 228, .10);
+  --text-primary:          #F6EFE4;
+  --text-primary-rgb:      246, 239, 228;
+  --text-secondary:        #E9DCC8;
+  --text-muted:            #C9B8A6;
+  --text-on-brand:         #2A1B12;
+  --border-color:          rgba(246, 239, 228, .16);
+  --border-strong:         rgba(246, 239, 228, .30);
+  --grad-hero:             radial-gradient(900px 520px at 80% 0%, rgba(201, 163, 106, .20) 0%, transparent 62%),
+                           radial-gradient(700px 480px at 0% 100%, rgba(176, 130, 86, .14) 0%, transparent 60%);
+  --shadow-sm:             0 1px 2px rgba(0, 0, 0, .18), 0 2px 6px rgba(0, 0, 0, .14);
+  --shadow-md:             0 10px 30px rgba(0, 0, 0, .28), 0 2px 6px rgba(0, 0, 0, .14);
+  --shadow-lg:             0 24px 60px rgba(0, 0, 0, .40), 0 4px 12px rgba(0, 0, 0, .20);
+  --focus-ring:            0 0 0 2px #2A1B12, 0 0 0 4px #C9A36A;
+  --bs-link-color-rgb:     201, 163, 106;
+  --btn-hover-bg:          #F6EFE4;
+  --btn-hover-text:        #2A1B12;
+  background: var(--grad-hero), #2A1B12;
+  color: var(--text-primary);
+}
+
+/* surfaces inside dark bands: back to the light scheme (same values as :root) */
+:is(.band-dark, .band-hero) :is(.event-card, .ne-card, .badge-ne, .ne-form-section, .ne-auth-card, .ne-auth-aside, .ne-hero-preview, .ne-search-bar, .ne-alert,
+                .ne-category-chip, .how-step, .ne-cta-banner, .ne-surface, .modal, .dropdown-menu, .offcanvas, .card, .table,
+                .form-control, .form-select, .ne-form-control) {
+  --brand-primary:         #4B2E1E;
+  --brand-primary-rgb:     75, 46, 30;
+  --brand-primary-hover:   #4B2E1E;
+  --brand-primary-active:  #2A1B12;
+  --brand-primary-light:   #4B2E1E;
+  --brand-primary-soft:    #EFE3D1;
+  --brand-primary-subtle:  #F5EDE1;
+  --brand-accent:          #B08256;
+  --brand-accent-strong:   #4B2E1E;
+  --brand-accent-soft:     #C9A36A;
+  --bg-page:               #FBF8F2;
+  --bg-surface:            #FFFDF9;
+  --bg-subtle:             #F2E9DC;
+  --bg-muted:              #E9DCC8;
+  --text-primary:          #2A1B12;
+  --text-primary-rgb:      42, 27, 18;
+  --text-secondary:        #5C4130;
+  --text-muted:            #7A5238;
+  --text-on-brand:         #FBF8F2;
+  --border-color:          #E7DCCB;
+  --border-strong:         #D4C3AB;
+  --shadow-sm:             0 1px 2px rgba(42, 27, 18, .04), 0 2px 6px rgba(42, 27, 18, .05);
+  --shadow-md:             0 10px 30px rgba(42, 27, 18, .08), 0 2px 6px rgba(42, 27, 18, .04);
+  --shadow-lg:             0 24px 60px rgba(42, 27, 18, .14), 0 4px 12px rgba(42, 27, 18, .06);
+  --focus-ring:            0 0 0 2px #FFFDF9, 0 0 0 4px #4B2E1E;
+  --bs-link-color-rgb:     75, 46, 30;
+  --btn-hover-bg:          #7A5238;
+  --btn-hover-text:        #FBF8F2;
+  color: var(--text-primary);
+}
+
+/* Derived tokens + legacy aliases. Custom properties that reference other
+   tokens are resolved where they are DECLARED, so they are re-declared on
+   the band scopes too — otherwise --ne-text would keep the light value inside a dark band. */
+:root,
+.band-dark,
+.band-hero,
+:is(.band-dark, .band-hero) :is(.event-card, .ne-card, .badge-ne, .ne-form-section, .ne-auth-card, .ne-auth-aside, .ne-hero-preview, .ne-search-bar, .ne-alert,
+                .ne-category-chip, .how-step, .ne-cta-banner, .ne-surface, .modal, .dropdown-menu, .offcanvas, .card, .table,
+                .form-control, .form-select, .ne-form-control) {
+  --info:                  var(--brand-primary-light);
+  --info-soft:             var(--brand-primary-soft);
+
+  /* ── Legacy aliases ──────────────────────────────────────────
+     nevents.css and ~900 inline styles in the views use --ne-* names.
+     They now resolve to the brand tokens above, so there is still only
+     ONE place to change a color. Prefer the new names in new code. */
+  --ne-primary:          var(--brand-primary);
+  --ne-primary-glow:     rgba(var(--brand-primary-rgb), .18);
+  --ne-secondary:        var(--brand-primary-light);
+  --ne-secondary-glow:   rgba(var(--brand-primary-rgb), .14);
+  --ne-accent:           var(--danger);             /* was used for errors / cancelled */
+  --ne-gold:             var(--brand-accent-strong);
+  --ne-green:            var(--success);
+
+  --ne-bg:               var(--bg-page);
+  --ne-bg-2:             var(--bg-subtle);
+  --ne-bg-card:          var(--bg-surface);
+  --ne-bg-glass:         rgba(var(--brand-primary-rgb), .05);
+  --ne-bg-glass-hover:   rgba(var(--brand-primary-rgb), .09);
+
+  --ne-text:             var(--text-primary);
+  --ne-text-muted:       var(--text-secondary);
+  --ne-text-dim:         var(--text-muted);
+
+  --ne-border:           var(--border-color);
+  --ne-border-glow:      rgba(var(--brand-primary-rgb), .35);
+
+  --ne-grad-primary:     var(--grad-brand);
+  --ne-grad-dark:        linear-gradient(180deg, var(--bg-page) 0%, var(--bg-subtle) 100%);
+  --ne-grad-card:        linear-gradient(135deg, rgba(var(--brand-accent-rgb), .06) 0%, transparent 70%);
+  --ne-grad-hero:        var(--grad-hero);
+
+  --ne-shadow-card:      var(--shadow-md);
+  --ne-shadow-glow:      0 6px 18px rgba(var(--brand-primary-rgb), .22);
+  --ne-shadow-cyan:      0 6px 18px rgba(var(--brand-primary-rgb), .16);
+  --ne-shadow-hover:     var(--shadow-lg);
+
+  --ne-font-sans:        var(--font-sans);
+  --ne-font-display:     var(--font-display);
+  --ne-font-mono:        var(--font-mono);
+
+  --ne-radius-sm:        var(--radius-sm);
+  --ne-radius:           var(--radius);
+  --ne-radius-lg:        var(--radius-lg);
+  --ne-radius-xl:        var(--radius-xl);
+  --ne-transition:       var(--transition);
+  --ne-transition-slow:  var(--transition-slow);
+
+  /* ── Bootstrap 5 variables -> brand (no default blue anywhere) ── */
+  --bs-primary:            var(--brand-primary);
+  --bs-primary-rgb:        var(--brand-primary-rgb);
+  --bs-link-color:         var(--brand-primary-light);
+  --bs-link-hover-color:   var(--brand-primary);
+  --bs-link-hover-color-rgb: var(--brand-primary-rgb);
+  --bs-body-color:         var(--text-primary);
+  --bs-code-color:         var(--text-secondary);   /* Bootstrap's pink doesn't fit the palette */
+  --bs-body-bg:            var(--bg-page);
+  --bs-border-color:       var(--border-color);
+  --bs-focus-ring-color:   rgba(var(--brand-primary-rgb), .28);
+  --bs-success:            var(--success);
+  --bs-danger:             var(--danger);
+  --bs-warning:            var(--brand-accent);
+  --bs-info:               var(--brand-primary-light);
+}
+
+/* Bootstrap components that don't read the root variables */
+.form-check-input:checked { background-color: var(--brand-primary); border-color: var(--brand-primary); }
+.form-check-input:focus, .form-select:focus, .form-control:focus { border-color: var(--brand-primary); box-shadow: var(--focus-ring); }
+.dropdown-menu {
+  --bs-dropdown-link-active-bg: var(--brand-primary);
+  --bs-dropdown-link-hover-bg: var(--brand-primary-subtle);
+  --bs-dropdown-link-color: var(--text-primary);
+  --bs-dropdown-border-color: var(--border-color);
+  --bs-dropdown-bg: var(--bg-surface);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  padding: .4rem;
+}
+.dropdown-item { border-radius: 6px; font-size: .875rem; padding: .5rem .75rem; }
+.dropdown-item i { color: var(--brand-primary-light); margin-right: .35rem; }
+.modal { --bs-modal-bg: var(--bg-surface); --bs-modal-border-color: var(--border-color); --bs-modal-border-radius: var(--radius); }
+.offcanvas { --bs-offcanvas-bg: var(--bg-surface); }
+.btn-close:focus { box-shadow: var(--focus-ring); }
+::selection { background: var(--accent-gold); color: var(--palette-espresso); }
+:focus-visible { outline: 2px solid var(--brand-primary-light); outline-offset: 2px; }

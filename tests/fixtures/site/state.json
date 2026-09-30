@@ -1,0 +1,121 @@
+{
+    "events": {
+        "ai-summit": {
+            "name": "Chennai AI Summit [T-165212]",
+            "start": "2026-11-04T10:00:00+05:30",
+            "end": "2026-11-04T17:00:00+05:30",
+            "path": "/events/ai-summit",
+            "venue": "IIT Madras Research Park",
+            "street": "Kanagam Road, Taramani",
+            "city": "Chennai",
+            "price": 0,
+            "organizer": "Chennai AI Guild",
+            "type": "BusinessEvent",
+            "description": "A full day of talks on applied AI for Tamil Nadu startups and enterprises."
+        },
+        "cycle-rally": {
+            "name": "Kovai Cycle Rally [T-165212]",
+            "start": "2026-11-09T07:00:00+05:30",
+            "path": "/events/cycle-rally",
+            "venue": "Race Course",
+            "city": "Coimbatore",
+            "price": 200,
+            "register": "https://example.org/kovai-rally",
+            "markup": "microdata"
+        },
+        "startup-mixer": {
+            "name": "Madurai Startup Mixer [T-165212]",
+            "start": "2026-11-14T18:30:00+05:30",
+            "end": "2026-11-14T21:00:00+05:30",
+            "path": "/events/startup-mixer",
+            "venue": "Hotel Fortune Pandiyan",
+            "city": "Madurai",
+            "price": 0
+        },
+        "mumbai-gig": {
+            "name": "Mumbai Indie Music Night [T-165212]",
+            "start": "2026-11-09T20:00:00+05:30",
+            "path": "/events/mumbai-gig",
+            "venue": "Antisocial Lower Parel",
+            "city": "Mumbai",
+            "price": 499,
+            "type": "MusicEvent"
+        },
+        "online-in": {
+            "name": "Online GenAI Study Circle [T-165212]",
+            "start": "2026-11-09T19:00:00+05:30",
+            "path": "/events/online-in",
+            "online": true,
+            "description": "Join us online for a weekly study circle on building with open models.",
+            "price": 0
+        },
+        "online-us": {
+            "name": "Startup Growth Webinar [T-165212]",
+            "start": "2026-11-09T13:00:00-05:00",
+            "path": "/events/online-us",
+            "online": true,
+            "description": "Join founders for a webinar on growth and hiring.",
+            "price": 0,
+            "currency": "USD"
+        },
+        "online-fr": {
+            "name": "Atelier en ligne pour entrepreneurs [T-165212]",
+            "start": "2026-11-09T18:00:00+05:30",
+            "path": "/events/online-fr",
+            "online": true,
+            "description": "Un atelier en ligne pour les entrepreneurs avec des experts.",
+            "price": 0
+        },
+        "online-ca": {
+            "name": "Product Leaders Roundtable [T-165212]",
+            "start": "2026-11-09T20:00:00-05:00",
+            "path": "/events/online-ca",
+            "online": true,
+            "description": "Join product leaders for an online roundtable on AI products.",
+            "price": 15,
+            "currency": "CAD"
+        },
+        "dubai-fest": {
+            "name": "Dubai Desert Fest [T-165212]",
+            "start": "2026-11-09T19:00:00+04:00",
+            "path": "/events/dubai-fest",
+            "venue": "Meydan Racecourse",
+            "city": "Dubai",
+            "country": "AE",
+            "price": 999,
+            "type": "MusicEvent"
+        }
+    },
+    "national": [
+        "mumbai-gig",
+        "dubai-fest",
+        "online-in",
+        "online-us",
+        "online-fr",
+        "online-ca"
+    ],
+    "feed": [
+        {
+            "title": "Chennai AI Summit [T-165212]",
+            "path": "/events/ai-summit"
+        }
+    ],
+    "ics": [
+        {
+            "uid": "summit-[T-165212]@fixture",
+            "name": "Chennai AI Summit [T-165212]",
+            "start": "20261104T100000",
+            "end": "20261104T180000",
+            "location": "Chennai Trade Centre, Nandambakkam, Chennai",
+            "url": "http://127.0.0.1:8098/events/ai-summit"
+        },
+        {
+            "uid": "workshop-[T-165212]@fixture",
+            "name": "Chennai AI Agents Workshop [T-165212]",
+            "start": "20261015T173000",
+            "end": "20261015T203000",
+            "location": "Anna Centenary Library, Kotturpuram, Chennai",
+            "url": "http://127.0.0.1:8098/events/workshop"
+        }
+    ]
+}
