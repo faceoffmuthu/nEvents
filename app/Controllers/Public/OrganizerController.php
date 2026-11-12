@@ -55,7 +55,7 @@ class OrganizerController
     private function upcomingOrganizers(): array
     {
         $rows = $this->db->select(
-            "SELECT TRIM(COALESCE(o.name, e.organizer_display_name)) AS name,
+            "SELECT MIN(TRIM(COALESCE(o.name, e.organizer_display_name))) AS name,
                     MAX(o.logo_url) AS logo_url, MAX(o.description) AS description, MAX(o.website) AS website_url,
                     COUNT(DISTINCT e.id) AS event_count
                FROM events e

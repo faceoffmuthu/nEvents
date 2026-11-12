@@ -58,7 +58,7 @@ class DuplicateDetectionService
 
         $params = [':day' => $day];
         $sql = "SELECT e.id, e.title, e.registration_url, e.organizer_display_name,
-                       o.name AS organizer_name, v.name AS venue_name, c.district_id,
+                       MAX(o.name) AS organizer_name, MAX(v.name) AS venue_name, MAX(c.district_id) AS district_id,
                        MIN(eo.start_at_utc) AS start_at_utc
                   FROM events e
                   JOIN event_occurrences eo ON eo.event_id = e.id

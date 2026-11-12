@@ -1,23 +1,33 @@
-FROM php:8.2-cli
+FROM php:8.3-apache
 
-# Install dependencies and PHP extensions
-RUN apt-get update && apt-get install -y git unzip libzip-dev default-mysql-client \
-    && docker-php-ext-install pdo_mysql zip
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends libcurl4-openssl-dev libonig-dev libzip-dev unzip \
+    && docker-php-ext-install curl mbstring pdo_mysql zip \
+    && a2enmod headers rewrite \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
-# Set working directory
-WORKDIR /app
+WORKDIR /var/www/html
 
-# Copy the application files
-COPY . .
+COPY composer.json composer.lock ./
+RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
 
-# Install PHP packages
-RUN composer install --no-dev --optimize-autoloader
+COPY . ./
 
-# Expose the port Render assigns
-EXPOSE $PORT
+RUN sed -ri 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/*.conf \
+    && printf '%s\n' \
+        '<Directory /var/www/html/public>' \
+        '    AllowOverride All' \
+        '    Require all granted' \
+        '</Directory>' > /etc/apache2/conf-available/nevents.conf \
+    && a2enconf nevents \
+    && mkdir -p storage/logs public/uploads/events \
+    && chown -R www-data:www-data storage public/uploads
 
-# Start the PHP built-in server
-CMD php -S 0.0.0.0:$PORT -t public router.php
+COPY docker/start.sh /usr/local/bin/nevents-start
+RUN chmod +x /usr/local/bin/nevents-start
+
+EXPOSE 10000
+
+CMD ["/usr/local/bin/nevents-start"]

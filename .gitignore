@@ -1,4 +1,27 @@
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# PHP dependencies and runtime files
 /vendor/
-/.env
 /storage/logs/
+/storage/uploads/
 /public/uploads/
+
+# Local tooling
+/.phpunit.cache/
+/.idea/
+.vscode/
+
+# Mobile build outputs, dependencies, and signing secrets
+/mobile/
+/mobile/node_modules/
+/mobile/dist/
+/mobile/android/.gradle/
+/mobile/android/app/build/
+/mobile/signing/
+
+# Operating-system files
+.DS_Store
+Thumbs.db

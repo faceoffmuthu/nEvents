@@ -1,0 +1,10 @@
+.env
+.git
+.github
+vendor
+storage/logs
+public/uploads
+mobile/node_modules
+mobile/dist
+mobile/android/.gradle
+mobile/android/app/build

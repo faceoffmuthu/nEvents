@@ -321,7 +321,7 @@ class NotificationService
         // Prefer events matching the user's interests (category or its parent);
         // users with no saved interests get everything in their district.
         return $this->db->select(
-            "SELECT e.*, MIN(eo.start_at_utc) AS next_start, v.name AS venue_name, c.name AS city_name
+            "SELECT e.*, MIN(eo.start_at_utc) AS next_start, MAX(v.name) AS venue_name, MAX(c.name) AS city_name
                FROM events e
                JOIN event_occurrences eo ON eo.event_id = e.id AND eo.status = 'scheduled'
                     AND eo.start_at_utc >= UTC_TIMESTAMP()

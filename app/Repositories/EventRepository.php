@@ -32,24 +32,25 @@ class EventRepository
             SELECT e.*,
                    MIN(eo.start_at_utc)  AS next_start,
                    MIN(eo.end_at_utc)    AS next_end,
-                   COALESCE(o.name, e.organizer_display_name) AS organizer_name,
-                   o.slug                AS organizer_slug,
-                   c.name                AS city_name,
-                   c.slug                AS city_slug,
-                   (SELECT dd.name FROM districts dd WHERE dd.id = c.district_id) AS district_name,
-                   v.name                AS venue_name,
-                   v.locality            AS venue_locality,
-                   v.address             AS venue_address,
-                   catp.slug             AS category_slug,
-                   catp.name             AS category_name,
-                   catp.color            AS category_color,
-                   catp.icon             AS category_icon
+                   COALESCE(MAX(o.name), e.organizer_display_name) AS organizer_name,
+                   MAX(o.slug)           AS organizer_slug,
+                   MAX(c.name)           AS city_name,
+                   MAX(c.slug)           AS city_slug,
+                   MAX(d.name)           AS district_name,
+                   MAX(v.name)           AS venue_name,
+                   MAX(v.locality)       AS venue_locality,
+                   MAX(v.address)        AS venue_address,
+                   MAX(catp.slug)        AS category_slug,
+                   MAX(catp.name)        AS category_name,
+                   MAX(catp.color)       AS category_color,
+                   MAX(catp.icon)        AS category_icon
             FROM events e
             JOIN event_occurrences eo ON eo.event_id = e.id
                  AND eo.status = 'scheduled'
                  AND eo.start_at_utc >= UTC_TIMESTAMP()
             LEFT JOIN organizers o ON o.id = e.primary_organizer_id
             LEFT JOIN cities     c ON c.id = e.city_id
+            LEFT JOIN districts  d ON d.id = c.district_id
             LEFT JOIN venues     v ON v.id = e.venue_id
             LEFT JOIN event_categories ecp ON ecp.event_id = e.id AND ecp.is_primary = 1
             LEFT JOIN categories catp ON catp.id = ecp.category_id
@@ -296,10 +297,10 @@ class EventRepository
         return $this->db->select("
             SELECT DISTINCT e.*,
                 MIN(eo.start_at_utc) AS next_start,
-                catp.slug  AS category_slug,
-                catp.name  AS category_name,
-                catp.color AS category_color,
-                catp.icon  AS category_icon
+                MAX(catp.slug)  AS category_slug,
+                MAX(catp.name)  AS category_name,
+                MAX(catp.color) AS category_color,
+                MAX(catp.icon)  AS category_icon
             FROM events e
             JOIN event_occurrences eo ON eo.event_id = e.id AND eo.status = 'scheduled' AND eo.start_at_utc >= UTC_TIMESTAMP()
             JOIN event_categories ec ON ec.event_id = e.id
@@ -328,12 +329,12 @@ class EventRepository
         return $this->db->select("
             SELECT e.*,
                    MIN(eo.start_at_utc) AS next_start,
-                   COALESCE(o.name, e.organizer_display_name) AS organizer_name,
-                   c.name AS city_name,
-                   catp.slug  AS category_slug,
-                   catp.name  AS category_name,
-                   catp.color AS category_color,
-                   catp.icon  AS category_icon
+                   COALESCE(MAX(o.name), e.organizer_display_name) AS organizer_name,
+                   MAX(c.name)    AS city_name,
+                   MAX(catp.slug) AS category_slug,
+                   MAX(catp.name) AS category_name,
+                   MAX(catp.color) AS category_color,
+                   MAX(catp.icon) AS category_icon
             FROM events e
             JOIN event_occurrences eo ON eo.event_id = e.id AND eo.status = 'scheduled' AND eo.start_at_utc >= UTC_TIMESTAMP()
             LEFT JOIN cities c ON c.id = e.city_id
@@ -356,11 +357,11 @@ class EventRepository
         return $this->db->select("
             SELECT e.*,
                    eo.start_at_utc AS next_start,
-                   COALESCE(o.name, e.organizer_display_name) AS organizer_name,
-                   catp.slug  AS category_slug,
-                   catp.name  AS category_name,
-                   catp.color AS category_color,
-                   catp.icon  AS category_icon
+                   COALESCE(MAX(o.name), e.organizer_display_name) AS organizer_name,
+                   MAX(catp.slug)  AS category_slug,
+                   MAX(catp.name)  AS category_name,
+                   MAX(catp.color) AS category_color,
+                   MAX(catp.icon)  AS category_icon
             FROM events e
             JOIN event_occurrences eo ON eo.event_id = e.id AND eo.status = 'scheduled'
             LEFT JOIN cities dc ON dc.id = e.city_id
@@ -441,12 +442,12 @@ class EventRepository
         return $this->db->select("
             SELECT e.*,
                    MIN(eo.start_at_utc) AS next_start,
-                   COALESCE(o.name, e.organizer_display_name) AS organizer_name,
-                   se.created_at AS saved_at,
-                   catp.slug  AS category_slug,
-                   catp.name  AS category_name,
-                   catp.color AS category_color,
-                   catp.icon  AS category_icon
+                   COALESCE(MAX(o.name), e.organizer_display_name) AS organizer_name,
+                   MAX(se.created_at) AS saved_at,
+                   MAX(catp.slug)  AS category_slug,
+                   MAX(catp.name)  AS category_name,
+                   MAX(catp.color) AS category_color,
+                   MAX(catp.icon)  AS category_icon
             FROM saved_events se
             JOIN events e ON e.id = se.event_id
             LEFT JOIN event_occurrences eo ON eo.event_id = e.id AND eo.status = 'scheduled' AND eo.start_at_utc >= UTC_TIMESTAMP()
@@ -455,7 +456,7 @@ class EventRepository
             LEFT JOIN categories catp ON catp.id = ecp.category_id
             WHERE se.user_id = :uid
             GROUP BY e.id
-            ORDER BY se.created_at DESC
+            ORDER BY saved_at DESC
         ", [':uid' => $userId]);
     }
 
