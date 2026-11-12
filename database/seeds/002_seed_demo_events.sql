@@ -115,6 +115,22 @@ WHERE o.slug = 'tn-startup-network' AND v.slug = 't-nagar-coworking-hub';
 -- ============================================================
 -- OCCURRENCES (idempotent — skipped if this event already has one)
 -- ============================================================
+-- Demo events are meant to make a new installation immediately browsable.
+-- If a deployment is revisited after their old dates have passed, remove only
+-- those expired *demo* occurrences so the inserts below create fresh dates.
+-- Never touch occurrences belonging to real/user-submitted events.
+DELETE eo FROM event_occurrences eo
+JOIN events e ON e.id = eo.event_id
+WHERE e.data_origin = 'demo'
+  AND e.slug IN (
+    'genai-builders-meetup',
+    'chennai-startup-summit',
+    'early-morning-cycling-ride',
+    'digital-marketing-masterclass',
+    'founders-coffee-meetup'
+  )
+  AND eo.start_at_utc < UTC_TIMESTAMP();
+
 INSERT INTO event_occurrences (event_id, start_at_utc, end_at_utc, timezone, status)
 SELECT e.id, DATE_ADD(UTC_TIMESTAMP(), INTERVAL 1 DAY), DATE_ADD(UTC_TIMESTAMP(), INTERVAL 1 DAY) + INTERVAL 2 HOUR, 'Asia/Kolkata', 'scheduled'
 FROM events e WHERE e.slug = 'genai-builders-meetup'
