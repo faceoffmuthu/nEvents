@@ -371,11 +371,10 @@ class EventController
             // analytics failure must never prevent the user from reaching registration
         }
 
-        return $this->view->makeResponse('events.register-redirect', [
-            'title'       => 'Redirecting to Registration — N Events',
-            'event'       => $event,
-            'external_url'=> $url,
-        ]);
+        // The event page opens this route in a new tab, leaving the visitor's
+        // original event page open. Send that new tab straight to the
+        // organizer instead of leaving it on an intermediate redirect page.
+        return Response::redirect($url);
     }
 
     public function save(Request $request): Response

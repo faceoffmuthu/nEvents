@@ -289,8 +289,8 @@ ob_start();
           <?php if ($deadline): ?><div class="ne-ev-fact-sub<?= $deadlineSoon ? ' is-urgent' : '' ?>" style="margin-bottom:1rem">Registration closes <?= View::e($deadline->format('j M, g:i A')) ?></div><?php endif; ?>
 
           <?php if ($regState === 'open'): ?>
-            <a href="<?= View::e($regUrl) ?>" class="btn-ne btn-ne-primary btn-ne-lg w-100 justify-content-center"><i class="fas fa-arrow-up-right-from-square"></i> Register Now</a>
-            <p class="ne-ev-cta-note">You'll continue on the organizer's registration page</p>
+            <a href="<?= View::e($regUrl) ?>" target="_blank" rel="noopener noreferrer" class="btn-ne btn-ne-primary btn-ne-lg w-100 justify-content-center"><i class="fas fa-arrow-up-right-from-square"></i> Register Now</a>
+            <p class="ne-ev-cta-note">Opens the organizer's registration page in a new tab</p>
           <?php elseif ($regState === 'cancelled'): ?>
             <button type="button" class="btn-ne btn-ne-lg w-100 justify-content-center ne-btn-state is-cancelled" disabled><i class="fas fa-ban"></i> Event cancelled</button>
           <?php else: ?>
@@ -344,7 +344,7 @@ ob_start();
   </button>
   <button type="button" class="ne-actionbar-icon" data-share="<?= $shareData ?>" aria-label="Share event"><i class="fas fa-share-nodes"></i></button>
   <?php if ($regState === 'open'): ?>
-    <a href="<?= View::e($regUrl) ?>" class="btn-ne btn-ne-primary ne-actionbar-cta">Register</a>
+    <a href="<?= View::e($regUrl) ?>" target="_blank" rel="noopener noreferrer" class="btn-ne btn-ne-primary ne-actionbar-cta">Register</a>
   <?php else: ?>
     <button type="button" class="btn-ne ne-actionbar-cta ne-btn-state<?= $regState === 'cancelled' ? ' is-cancelled' : '' ?>" disabled><?= $regState === 'cancelled' ? 'Cancelled' : 'Closed' ?></button>
   <?php endif; ?>
