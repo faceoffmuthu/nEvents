@@ -39,6 +39,9 @@ $router->group(['middleware' => [CsrfMiddleware::class]], function (Router $r) {
     $r->group(['middleware' => [AuthMiddleware::class]], function (Router $r) {
         $r->get('/events/create',  [UserEventController::class, 'createForm']);
         $r->post('/events/create', [UserEventController::class, 'store']);
+        // Registration links require an N Events account. AuthMiddleware stores
+        // this URL so a successful login returns the visitor to this screen.
+        $r->get('/event/{slug}/register', [EventController::class, 'registerRedirect']);
     });
 
     // Event discovery
@@ -58,7 +61,6 @@ $router->group(['middleware' => [CsrfMiddleware::class]], function (Router $r) {
 
     // Event detail & registration redirect
     $r->get('/event/{slug}',                [EventController::class, 'show']);
-    $r->get('/event/{slug}/register',       [EventController::class, 'registerRedirect']);
     $r->post('/event/{slug}/save',          [EventController::class, 'save']);
     $r->post('/event/{slug}/unsave',        [EventController::class, 'unsave']);
     $r->post('/event/{slug}/report',        [EventController::class, 'report']);
