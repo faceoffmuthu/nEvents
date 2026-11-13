@@ -24,6 +24,12 @@ class HomeController
 
     public function index(Request $request): Response
     {
+        // The native app starts at the sign-in screen. The public website
+        // remains available to visitors without an account.
+        if (\NEvents\Helpers\AppMode::active() && !$request->isLoggedIn()) {
+            return Response::redirect(View::url('login'));
+        }
+
         // The visitor's district (signed-in preference, then this visit's choice), else All India
         $district   = $this->districts->activeDistrict($request->isLoggedIn() ? $request->userId() : null);
         $districtId = $district['id'] ?? null;
