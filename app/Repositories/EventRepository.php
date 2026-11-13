@@ -48,6 +48,8 @@ class EventRepository
             JOIN event_occurrences eo ON eo.event_id = e.id
                  AND eo.status = 'scheduled'
                  AND eo.start_at_utc >= UTC_TIMESTAMP()
+                 AND (COALESCE(eo.registration_deadline, e.registration_deadline) IS NULL
+                      OR COALESCE(eo.registration_deadline, e.registration_deadline) >= UTC_TIMESTAMP())
             LEFT JOIN organizers o ON o.id = e.primary_organizer_id
             LEFT JOIN cities     c ON c.id = e.city_id
             LEFT JOIN districts  d ON d.id = c.district_id
@@ -76,6 +78,8 @@ class EventRepository
             JOIN event_occurrences eo ON eo.event_id = e.id
                  AND eo.status = 'scheduled'
                  AND eo.start_at_utc >= UTC_TIMESTAMP()
+                 AND (COALESCE(eo.registration_deadline, e.registration_deadline) IS NULL
+                      OR COALESCE(eo.registration_deadline, e.registration_deadline) >= UTC_TIMESTAMP())
             WHERE {$whereClause}
         ";
 
@@ -95,6 +99,8 @@ class EventRepository
             JOIN event_occurrences eo ON eo.event_id = e.id
                  AND eo.status = 'scheduled'
                  AND eo.start_at_utc >= UTC_TIMESTAMP()
+                 AND (COALESCE(eo.registration_deadline, e.registration_deadline) IS NULL
+                      OR COALESCE(eo.registration_deadline, e.registration_deadline) >= UTC_TIMESTAMP())
             LEFT JOIN cities c ON c.id = e.city_id
             LEFT JOIN venues v ON v.id = e.venue_id
             WHERE e.status = 'published' AND e.format <> 'online'
@@ -303,6 +309,8 @@ class EventRepository
                 MAX(catp.icon)  AS category_icon
             FROM events e
             JOIN event_occurrences eo ON eo.event_id = e.id AND eo.status = 'scheduled' AND eo.start_at_utc >= UTC_TIMESTAMP()
+                 AND (COALESCE(eo.registration_deadline, e.registration_deadline) IS NULL
+                      OR COALESCE(eo.registration_deadline, e.registration_deadline) >= UTC_TIMESTAMP())
             JOIN event_categories ec ON ec.event_id = e.id
             LEFT JOIN event_categories ecp ON ecp.event_id = e.id AND ecp.is_primary = 1
             LEFT JOIN categories catp ON catp.id = ecp.category_id
@@ -337,6 +345,8 @@ class EventRepository
                    MAX(catp.icon) AS category_icon
             FROM events e
             JOIN event_occurrences eo ON eo.event_id = e.id AND eo.status = 'scheduled' AND eo.start_at_utc >= UTC_TIMESTAMP()
+                 AND (COALESCE(eo.registration_deadline, e.registration_deadline) IS NULL
+                      OR COALESCE(eo.registration_deadline, e.registration_deadline) >= UTC_TIMESTAMP())
             LEFT JOIN cities c ON c.id = e.city_id
             LEFT JOIN organizers o ON o.id = e.primary_organizer_id
             LEFT JOIN event_categories ecp ON ecp.event_id = e.id AND ecp.is_primary = 1
@@ -364,6 +374,8 @@ class EventRepository
                    MAX(catp.icon)  AS category_icon
             FROM events e
             JOIN event_occurrences eo ON eo.event_id = e.id AND eo.status = 'scheduled'
+                 AND (COALESCE(eo.registration_deadline, e.registration_deadline) IS NULL
+                      OR COALESCE(eo.registration_deadline, e.registration_deadline) >= UTC_TIMESTAMP())
             LEFT JOIN cities dc ON dc.id = e.city_id
             LEFT JOIN organizers o ON o.id = e.primary_organizer_id
             LEFT JOIN event_categories ecp ON ecp.event_id = e.id AND ecp.is_primary = 1
@@ -389,6 +401,8 @@ class EventRepository
                    catp.icon  AS category_icon
             FROM events e
             JOIN event_occurrences eo ON eo.event_id = e.id AND eo.status = 'scheduled'
+                 AND (COALESCE(eo.registration_deadline, e.registration_deadline) IS NULL
+                      OR COALESCE(eo.registration_deadline, e.registration_deadline) >= UTC_TIMESTAMP())
             LEFT JOIN cities dc ON dc.id = e.city_id
             LEFT JOIN organizers o ON o.id = e.primary_organizer_id
             LEFT JOIN event_categories ecp ON ecp.event_id = e.id AND ecp.is_primary = 1

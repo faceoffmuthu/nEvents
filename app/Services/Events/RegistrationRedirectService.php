@@ -75,7 +75,7 @@ class RegistrationRedirectService
      * active right now" — used identically by the event detail page and the
      * register-redirect route, so they never disagree.
      *
-     * @return 'open'|'cancelled'|'completed'|'no_link'
+     * @return 'open'|'cancelled'|'completed'|'registration_closed'|'no_link'
      */
     public function determineState(array $event, array $occurrences): string
     {
@@ -90,16 +90,24 @@ class RegistrationRedirectService
         if (!empty($occurrences)) {
             $now = new \DateTimeImmutable('now', new \DateTimeZone('UTC'));
             $hasUpcoming = false;
+            $hasOpenRegistration = false;
             foreach ($occurrences as $occ) {
                 $cutoffRaw = !empty($occ['end_at_utc']) ? $occ['end_at_utc'] : $occ['start_at_utc'];
                 $cutoff = new \DateTimeImmutable($cutoffRaw, new \DateTimeZone('UTC'));
                 if ($cutoff >= $now) {
                     $hasUpcoming = true;
-                    break;
+                    $deadlineRaw = $occ['registration_deadline'] ?? $event['registration_deadline'] ?? null;
+                    if (empty($deadlineRaw) || new \DateTimeImmutable($deadlineRaw, new \DateTimeZone('UTC')) >= $now) {
+                        $hasOpenRegistration = true;
+                        break;
+                    }
                 }
             }
             if (!$hasUpcoming) {
                 return 'completed';
+            }
+            if (!$hasOpenRegistration) {
+                return 'registration_closed';
             }
         }
 

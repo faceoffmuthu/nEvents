@@ -348,9 +348,13 @@ class EventController
                 'event' => $event,
             ]);
         }
-        if ($state === 'cancelled' || $state === 'completed') {
+        if (in_array($state, ['cancelled', 'completed', 'registration_closed'], true)) {
             return $this->view->makeResponse('events.registration-closed', [
-                'title' => ($state === 'cancelled' ? 'Event Cancelled' : 'Event Completed') . ' — N Events',
+                'title' => match ($state) {
+                    'cancelled' => 'Event Cancelled — N Events',
+                    'registration_closed' => 'Registration Closed — N Events',
+                    default => 'Event Completed — N Events',
+                },
                 'event' => $event,
                 'state' => $state,
             ]);

@@ -129,6 +129,8 @@ ob_start();
               <span class="badge-ne" style="background:var(--danger-soft);color:var(--danger);border:1px solid rgba(var(--danger-rgb),.3)"><i class="fas fa-ban fa-xs"></i> Cancelled</span>
             <?php elseif ($regState === 'completed'): ?>
               <span class="badge-ne" style="background:var(--bg-subtle);color:var(--text-secondary);border:1px solid var(--ne-border)"><i class="fas fa-flag-checkered fa-xs"></i> Completed</span>
+            <?php elseif ($regState === 'registration_closed'): ?>
+              <span class="badge-ne" style="background:var(--bg-subtle);color:var(--text-secondary);border:1px solid var(--ne-border)"><i class="fas fa-clock fa-xs"></i> Registration closed</span>
             <?php endif; ?>
             <?php if (($e['verification_status'] ?? '') === 'verified'): ?>
               <span class="badge-ne badge-verified"><i class="fas fa-check-circle fa-xs"></i> Verified</span>
@@ -346,7 +348,7 @@ ob_start();
   <?php if ($regState === 'open'): ?>
     <a href="<?= View::e($regUrl) ?>" class="btn-ne btn-ne-primary ne-actionbar-cta">Register</a>
   <?php else: ?>
-    <button type="button" class="btn-ne ne-actionbar-cta ne-btn-state<?= $regState === 'cancelled' ? ' is-cancelled' : '' ?>" disabled><?= $regState === 'cancelled' ? 'Cancelled' : 'Closed' ?></button>
+    <button type="button" class="btn-ne ne-actionbar-cta ne-btn-state<?= $regState === 'cancelled' ? ' is-cancelled' : '' ?>" disabled><?= $regState === 'cancelled' ? 'Cancelled' : ($regState === 'registration_closed' ? 'Registration closed' : 'Closed') ?></button>
   <?php endif; ?>
 </div>
 

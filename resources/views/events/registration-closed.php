@@ -4,14 +4,15 @@ $appUrl = rtrim($_ENV['APP_URL'] ?? '', '/');
 $e      = $event ?? [];
 $state  = $state ?? 'completed';
 $isCancelled = $state === 'cancelled';
+$isRegistrationClosed = $state === 'registration_closed';
 ob_start();
 ?>
 <div class="ne-auth-wrapper <?= \NEvents\Helpers\AppMode::active() ? 'band-cream' : 'band-hero' ?>" style="flex-direction:column;gap:2rem;text-align:center">
   <div class="ne-auth-card" style="max-width:520px">
     <div style="width:72px;height:72px;border-radius:50%;background:<?= $isCancelled ? 'rgba(var(--danger-rgb),.15)' : 'var(--bg-subtle)' ?>;border:2px solid <?= $isCancelled ? 'var(--ne-accent)' : 'var(--ne-text-dim)' ?>;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1.5rem">
-      <?= $isCancelled ? '🚫' : '🏁' ?>
+      <?= $isCancelled ? '🚫' : ($isRegistrationClosed ? '⏰' : '🏁') ?>
     </div>
-    <h1 style="font-size:1.5rem;font-weight:800;margin-bottom:.75rem"><?= $isCancelled ? 'Event Cancelled' : 'Event Completed' ?></h1>
+    <h1 style="font-size:1.5rem;font-weight:800;margin-bottom:.75rem"><?= $isCancelled ? 'Event Cancelled' : ($isRegistrationClosed ? 'Registration Closed' : 'Event Completed') ?></h1>
 
     <div style="background:var(--ne-bg-glass);border:1px solid var(--ne-border);border-radius:var(--ne-radius-sm);padding:1.25rem;margin-bottom:1.5rem;text-align:left">
       <div style="font-weight:700;margin-bottom:.25rem"><?= View::e($e['title'] ?? '') ?></div>
@@ -25,7 +26,9 @@ ob_start();
       <span>
         <?= $isCancelled
             ? 'This event has been cancelled by the organizer. Registration is not available.'
-            : 'This event has already taken place, so registration is now closed.' ?>
+            : ($isRegistrationClosed
+                ? 'The registration deadline for this event has passed.'
+                : 'This event has already taken place, so registration is now closed.') ?>
       </span>
     </div>
 
