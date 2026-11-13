@@ -112,9 +112,9 @@ if ($__app) {
 
       <!-- Desktop Nav -->
       <div class="d-none d-lg-flex align-items-center gap-1">
-        <a href="<?= $appUrl ?>/organizers"     class="ne-nav-link<?= $navActive('/organizer') ?>">Organizers</a>
         <a href="<?= $appUrl ?>/about"          class="ne-nav-link<?= $navActive('/about') ?>">About</a>
         <a href="<?= $appUrl ?>/how-it-works"   class="ne-nav-link<?= $navActive('/how-it-works') ?>">How It Works</a>
+        <a href="<?= $appUrl ?>/organizers"     class="ne-nav-link<?= $navActive('/organizer') ?>">Organizers</a>
         <a href="<?= $appUrl ?>/faq"            class="ne-nav-link<?= $navActive('/faq') ?>">FAQ</a>
         <a href="<?= $appUrl ?>/contact"        class="ne-nav-link<?= $navActive('/contact') ?>">Contact</a>
       </div>
@@ -172,9 +172,9 @@ if ($__app) {
   </div>
   <div class="offcanvas-body">
     <nav class="d-flex flex-column gap-1">
-      <a href="<?= $appUrl ?>/organizers"        class="ne-sidebar-link"><i class="fas fa-building"></i> Organizers</a>
       <a href="<?= $appUrl ?>/about"             class="ne-sidebar-link"><i class="fas fa-circle-info"></i> About</a>
       <a href="<?= $appUrl ?>/how-it-works"      class="ne-sidebar-link"><i class="fas fa-circle-question"></i> How It Works</a>
+      <a href="<?= $appUrl ?>/organizers"        class="ne-sidebar-link"><i class="fas fa-building"></i> Organizers</a>
       <a href="<?= $appUrl ?>/faq"               class="ne-sidebar-link"><i class="fas fa-question"></i> FAQ</a>
       <a href="<?= $appUrl ?>/contact"           class="ne-sidebar-link"><i class="fas fa-envelope"></i> Contact Us</a>
       <hr class="ne-divider">
@@ -265,8 +265,6 @@ if ($__app) {
         <a href="<?= $appUrl ?>/privacy">Privacy Policy</a>
         <span class="ne-footer-meta-separator" aria-hidden="true">·</span>
         <a href="<?= $appUrl ?>/terms">Terms &amp; Conditions</a>
-        <span class="ne-footer-meta-separator" aria-hidden="true">·</span>
-        <span>Designed with <span style="color:var(--brand-accent)" aria-label="love">♥</span> in Chennai</span>
       </div>
     </div>
   </div>
