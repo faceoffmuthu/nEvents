@@ -469,24 +469,6 @@ function initFlashMessages() {
   });
 }
 
-// ── Register redirect countdown ─────────────────────────────
-function initRegisterRedirect() {
-  const countdown = document.querySelector('[data-redirect-countdown]');
-  if (!countdown) return;
-
-  const url = countdown.dataset.url;
-  let secs  = parseInt(countdown.dataset.seconds || '5', 10);
-
-  const interval = setInterval(() => {
-    secs--;
-    countdown.textContent = secs;
-    if (secs <= 0) {
-      clearInterval(interval);
-      window.location.href = url;
-    }
-  }, 1000);
-}
-
 // ── Form validation helpers ─────────────────────────────────
 function initForms() {
   document.querySelectorAll('.ne-form-validated').forEach(form => {
@@ -542,7 +524,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initLocationPickers();
   initStateDistrictSelects();
   initFlashMessages();
-  initRegisterRedirect();
   initForms();
   initInterestSelector();
   initBootstrap();
