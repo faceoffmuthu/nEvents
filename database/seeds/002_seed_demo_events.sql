@@ -38,7 +38,7 @@ SELECT
   'Hands-on talks and demos from engineers building with LLMs and generative AI.',
   'Join fellow builders for an evening of lightning talks, live demos and open discussion on building production GenAI applications — covering RAG pipelines, agents, evaluation and deployment. Free pizza and networking after the talks.',
   o.id, 'meetup', 'offline',
-  'published', 'demo', 'verified', 92, 'https://example.com/events/genai-builders-meetup', 'Asia/Kolkata',
+  'published', 'demo', 'verified', 92, NULL, 'Asia/Kolkata',
   'free', 'INR', v.id, 1, 1,
   NOW(), NOW(), NOW(), NOW()
 FROM organizers o, venues v
@@ -55,7 +55,7 @@ SELECT
   'A full-day summit bringing together founders, investors and operators from across Tamil Nadu.',
   'The Chennai Startup Summit brings together 500+ founders, angel investors and VCs for a day of keynotes, pitch sessions and structured networking. Tracks include fundraising, product-market fit and scaling operations.',
   o.id, 'conference', 'offline',
-  'published', 'demo', 'verified', 95, 'https://example.com/events/chennai-startup-summit', 'Asia/Kolkata',
+  'published', 'demo', 'verified', 95, NULL, 'Asia/Kolkata',
   'paid', 'INR', 499, 1999, v.id, 1, 1,
   NOW(), NOW(), NOW(), NOW()
 FROM organizers o, venues v
@@ -72,7 +72,7 @@ SELECT
   'A relaxed 25km group ride along ECR — all fitness levels welcome.',
   'Meet at ECR Start Point for a scenic 25km group ride along the coast. Suitable for all fitness levels, with regroup stops every 8km. Bring your own bike, helmet mandatory.',
   o.id, 'community_ride', 'offline',
-  'published', 'demo', 'verified', 80, 'https://example.com/events/early-morning-cycling-ride', 'Asia/Kolkata',
+  'published', 'demo', 'verified', 80, NULL, 'Asia/Kolkata',
   'free', 'INR', v.id, 1, 0,
   NOW(), NOW(), NOW(), NOW()
 FROM organizers o, venues v
@@ -89,7 +89,7 @@ SELECT
   'A live online session on SEO, paid acquisition and content strategy for 2026.',
   'A 90-minute live online masterclass covering modern SEO, paid acquisition channels and content strategy, with a Q&A session at the end.',
   o.id, 'webinar', 'online',
-  'published', 'demo', 'verified', 75, 'https://example.com/events/digital-marketing-masterclass', 'Asia/Kolkata',
+  'published', 'demo', 'verified', 75, NULL, 'Asia/Kolkata',
   'free', 'INR', 'Zoom', 'https://example.com/webinar/digital-marketing-masterclass', 1, 0,
   NOW(), NOW(), NOW(), NOW()
 FROM organizers o
@@ -106,11 +106,25 @@ SELECT
   'An informal coffee catch-up for early-stage founders.',
   'Drop in for coffee and conversation with other early-stage founders. No agenda, no pitches — just an informal weekly catch-up.',
   o.id, 'meetup', 'offline',
-  'published', 'demo', 'verified', 70, 'https://example.com/events/founders-coffee-meetup', 'Asia/Kolkata',
+  'published', 'demo', 'verified', 70, NULL, 'Asia/Kolkata',
   'free', 'INR', v.id, 1, 0,
   NOW(), NOW(), NOW(), NOW()
 FROM organizers o, venues v
 WHERE o.slug = 'tn-startup-network' AND v.slug = 't-nagar-coworking-hub';
+
+-- The demonstration records intentionally have no real registration sites.
+-- Remove placeholder links from databases seeded by an earlier release.
+UPDATE events
+SET registration_url = NULL
+WHERE data_origin = 'demo'
+  AND slug IN (
+    'genai-builders-meetup',
+    'chennai-startup-summit',
+    'early-morning-cycling-ride',
+    'digital-marketing-masterclass',
+    'founders-coffee-meetup'
+  )
+  AND registration_url LIKE 'https://example.com/%';
 
 -- ============================================================
 -- OCCURRENCES (idempotent — skipped if this event already has one)
