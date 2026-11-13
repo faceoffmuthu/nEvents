@@ -223,9 +223,9 @@ if ($__app) {
 <!-- ── Footer ── -->
 <footer class="ne-footer">
   <div class="container-xl">
-    <div class="row g-4">
-      <div class="col-lg-4">
-        <?= View::partial('brand-logo', ['logo_variant' => 'full', 'logo_height' => 112, 'logo_tile' => true]) ?>
+    <div class="ne-footer-grid">
+      <section class="ne-footer-brand">
+        <?= View::partial('brand-logo', ['logo_variant' => 'full', 'logo_height' => 96, 'logo_tile' => true]) ?>
         <p class="ne-footer-tagline mt-3 mb-3">Stop searching for events.<br>Let the right events find you.</p>
         <p class="ne-footer-about">Tech meetups, startup nights, workshops, rides and cultural events across India — discovered, verified and posted by the community.</p>
         <div class="ne-social-links">
@@ -233,8 +233,8 @@ if ($__app) {
           <a href="#" class="ne-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           <a href="#" class="ne-social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         </div>
-      </div>
-      <div class="col-6 col-lg-2">
+      </section>
+      <section class="ne-footer-group">
         <div class="ne-footer-heading">Discover</div>
         <ul class="ne-footer-links">
           <li><a href="<?= $appUrl ?>/events/today">Today's Events</a></li>
@@ -243,8 +243,8 @@ if ($__app) {
           <li><a href="<?= $appUrl ?>/events/online">Online Events</a></li>
           <li><a href="<?= $appUrl ?>/discover">All Events</a></li>
         </ul>
-      </div>
-      <div class="col-6 col-lg-2">
+      </section>
+      <section class="ne-footer-group">
         <div class="ne-footer-heading">Popular Cities</div>
         <ul class="ne-footer-links">
           <li><a href="<?= $appUrl ?>/events/chennai">Chennai</a></li>
@@ -254,7 +254,7 @@ if ($__app) {
           <li><a href="<?= $appUrl ?>/events/new-delhi">Delhi</a></li>
           <li><a href="<?= $appUrl ?>/events/puducherry">Puducherry</a></li>
         </ul>
-      </div>
+      </section>
     </div>
 
     <div class="ne-footer-bottom">
