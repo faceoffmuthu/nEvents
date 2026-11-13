@@ -112,11 +112,6 @@ if ($__app) {
 
       <!-- Desktop Nav -->
       <div class="d-none d-lg-flex align-items-center gap-1">
-        <a href="<?= $appUrl ?>/discover"       class="ne-nav-link<?= $navActive('/discover') ?>">Discover</a>
-        <a href="<?= $appUrl ?>/events/today"   class="ne-nav-link<?= $navActive('/events/today') ?>">Today</a>
-        <a href="<?= $appUrl ?>/events/this-weekend" class="ne-nav-link<?= $navActive('/events/this-weekend') ?>">Weekend</a>
-        <a href="<?= $appUrl ?>/events/free"    class="ne-nav-link<?= $navActive('/events/free') ?>">Free</a>
-        <a href="<?= $appUrl ?>/events/online"  class="ne-nav-link<?= $navActive('/events/online') ?>">Online</a>
         <a href="<?= $appUrl ?>/organizers"     class="ne-nav-link<?= $navActive('/organizer') ?>">Organizers</a>
         <a href="<?= $appUrl ?>/about"          class="ne-nav-link<?= $navActive('/about') ?>">About</a>
         <a href="<?= $appUrl ?>/how-it-works"   class="ne-nav-link<?= $navActive('/how-it-works') ?>">How It Works</a>
@@ -176,11 +171,6 @@ if ($__app) {
   </div>
   <div class="offcanvas-body">
     <nav class="d-flex flex-column gap-1">
-      <a href="<?= $appUrl ?>/discover"          class="ne-sidebar-link"><i class="fas fa-compass"></i> Discover Events</a>
-      <a href="<?= $appUrl ?>/events/today"      class="ne-sidebar-link"><i class="fas fa-clock"></i> Today</a>
-      <a href="<?= $appUrl ?>/events/this-weekend" class="ne-sidebar-link"><i class="fas fa-sun"></i> This Weekend</a>
-      <a href="<?= $appUrl ?>/events/free"       class="ne-sidebar-link"><i class="fas fa-gift"></i> Free Events</a>
-      <a href="<?= $appUrl ?>/events/online"     class="ne-sidebar-link"><i class="fas fa-laptop"></i> Online Events</a>
       <a href="<?= $appUrl ?>/organizers"        class="ne-sidebar-link"><i class="fas fa-building"></i> Organizers</a>
       <a href="<?= $appUrl ?>/about"             class="ne-sidebar-link"><i class="fas fa-circle-info"></i> About</a>
       <a href="<?= $appUrl ?>/how-it-works"      class="ne-sidebar-link"><i class="fas fa-circle-question"></i> How It Works</a>
