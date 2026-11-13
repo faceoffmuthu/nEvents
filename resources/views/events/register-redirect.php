@@ -35,7 +35,7 @@ ob_start();
     </div>
 
     <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap">
-      <a href="<?= View::e($external_url) ?>" target="_blank" rel="noopener noreferrer" class="btn-ne btn-ne-primary">
+      <a href="<?= View::e($external_url) ?>" rel="noopener noreferrer" class="btn-ne btn-ne-primary">
         <i class="fas fa-external-link-alt"></i> Go to Registration Now
       </a>
       <a href="<?= $appUrl ?>/event/<?= View::e($e['slug']) ?>" class="btn-ne btn-ne-ghost">

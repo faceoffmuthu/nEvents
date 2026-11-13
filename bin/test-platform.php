@@ -282,7 +282,7 @@ check('Google Calendar link: location + registration link in details', str_conta
 $r = $B->post('/event/' . $evB['slug'] . '/save', []);
 check('Save event', str_contains($r['body'], '"success":true'));
 $r = $B->get('/event/' . $evB['slug'] . '/register');
-check('Register Now redirects to organizer URL', $r['status'] === 302 && str_contains($r['location'], 'townscript.com/e/chennai-ai-agents-workshop'));
+check('Register Now -> redirect page to organizer URL', $r['status'] === 200 && str_contains($r['body'], 'townscript.com/e/chennai-ai-agents-workshop'));
 $r = $B->get('/event/' . $evB['slug'] . '/calendar.ics');
 check('.ics has correct UTC DTSTART', str_contains($r['body'], "DTSTART:{$d20}T123000Z"));
 

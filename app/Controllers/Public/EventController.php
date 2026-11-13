@@ -372,9 +372,13 @@ class EventController
         }
 
         // The event page opens this route in a new tab, leaving the visitor's
-        // original event page open. Send that new tab straight to the
-        // organizer instead of leaving it on an intermediate redirect page.
-        return Response::redirect($url);
+        // original event page open. This confirmation page then sends that
+        // new tab to the organizer's registration website.
+        return $this->view->makeResponse('events.register-redirect', [
+            'title'       => 'Redirecting to Registration — N Events',
+            'event'       => $event,
+            'external_url'=> $url,
+        ]);
     }
 
     public function save(Request $request): Response
