@@ -200,7 +200,7 @@ foreach ($rows as [$rail_title, $rail_icon, $rail_sub, $rail_link, $rail_events]
       <?php
       $steps = [
         ['num'=>1,'icon'=>'fa-sliders','title'=>'Set Your Interests','text'=>'Choose your city, select interest categories, and set a search radius. We learn what matters to you.'],
-        ['num'=>2,'icon'=>'fa-radar','title'=>'We Discover Events','text'=>'Our platform continuously scans permitted sources, discovers events, removes duplicates and verifies information.'],
+        ['num'=>2,'icon'=>'fa-magnifying-glass','title'=>'We Discover Events','text'=>'Our platform continuously scans permitted sources, discovers events, removes duplicates and verifies information.'],
         ['num'=>3,'icon'=>'fa-brain','title'=>'Smart Ranking','text'=>'Events are scored and ranked based on your interests, location, format preference and event quality.'],
         ['num'=>4,'icon'=>'fa-bell','title'=>'Events Find You','text'=>'Receive personalized daily digests via email. Never manually search for events again.'],
       ];
