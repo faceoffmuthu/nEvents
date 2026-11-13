@@ -129,9 +129,6 @@ if ($__app) {
       <!-- Auth -->
       <div class="d-flex align-items-center gap-2">
         <?php if ($userId): ?>
-          <a href="<?= $appUrl ?>/events/create" class="btn-ne btn-ne-primary btn-ne-sm d-none d-lg-flex">
-            <i class="fas fa-plus"></i> Post Event
-          </a>
           <!-- phones/tablets: Profile tab + Sign out on the profile screen cover these -->
           <div class="dropdown d-none d-lg-block">
             <button class="btn-ne btn-ne-ghost btn-ne-sm" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Account menu">
@@ -184,7 +181,6 @@ if ($__app) {
       <a href="<?= $appUrl ?>/organizers"        class="ne-sidebar-link"><i class="fas fa-building"></i> Organizers</a>
       <hr class="ne-divider">
       <?php if ($userId): ?>
-      <a href="<?= $appUrl ?>/events/create"      class="ne-sidebar-link"><i class="fas fa-plus"></i> Post Event</a>
       <a href="<?= $appUrl ?>/dashboard"          class="ne-sidebar-link"><i class="fas fa-tachometer-alt"></i> My Dashboard</a>
       <a href="<?= $appUrl ?>/my-events"          class="ne-sidebar-link"><i class="fas fa-calendar-check"></i> My Events</a>
       <a href="<?= $appUrl ?>/my-events/saved"    class="ne-sidebar-link"><i class="fas fa-bookmark"></i> Saved Events</a>
@@ -266,7 +262,6 @@ if ($__app) {
         <ul class="ne-footer-links">
           <li><a href="<?= $appUrl ?>/about">About</a></li>
           <li><a href="<?= $appUrl ?>/how-it-works">How It Works</a></li>
-          <li><a href="<?= $appUrl ?>/events/create">Post an Event</a></li>
           <li><a href="<?= $appUrl ?>/organizers">Organizer Directory</a></li>
           <li><a href="<?= $appUrl ?>/faq">FAQ</a></li>
         </ul>
@@ -299,7 +294,6 @@ if ($__app) {
   $__tabs = [
       ['/',               'fa-compass',             'Explore', $__path === '/'],
       ['/discover',       'fa-magnifying-glass',    'Search',  $__isSearch],
-      ['/events/create',  'fa-plus',                'Post',    $__path === '/events/create', true],
       ['/my-events/saved','fa-heart',               'Saved',   $__path === '/my-events/saved'],
       $userId
         ? ['/dashboard',  'fa-user',                'Profile', str_starts_with($__path, '/dashboard') || str_starts_with($__path, '/account') || ($__path === '/my-events' || (str_starts_with($__path, '/my-events/') && $__path !== '/my-events/saved'))]
