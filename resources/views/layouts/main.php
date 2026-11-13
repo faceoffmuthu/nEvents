@@ -118,6 +118,9 @@ if ($__app) {
         <a href="<?= $appUrl ?>/events/free"    class="ne-nav-link<?= $navActive('/events/free') ?>">Free</a>
         <a href="<?= $appUrl ?>/events/online"  class="ne-nav-link<?= $navActive('/events/online') ?>">Online</a>
         <a href="<?= $appUrl ?>/organizers"     class="ne-nav-link<?= $navActive('/organizer') ?>">Organizers</a>
+        <a href="<?= $appUrl ?>/about"          class="ne-nav-link<?= $navActive('/about') ?>">About</a>
+        <a href="<?= $appUrl ?>/how-it-works"   class="ne-nav-link<?= $navActive('/how-it-works') ?>">How It Works</a>
+        <a href="<?= $appUrl ?>/faq"            class="ne-nav-link<?= $navActive('/faq') ?>">FAQ</a>
       </div>
 
       <!-- Quick Search -->
@@ -179,6 +182,9 @@ if ($__app) {
       <a href="<?= $appUrl ?>/events/free"       class="ne-sidebar-link"><i class="fas fa-gift"></i> Free Events</a>
       <a href="<?= $appUrl ?>/events/online"     class="ne-sidebar-link"><i class="fas fa-laptop"></i> Online Events</a>
       <a href="<?= $appUrl ?>/organizers"        class="ne-sidebar-link"><i class="fas fa-building"></i> Organizers</a>
+      <a href="<?= $appUrl ?>/about"             class="ne-sidebar-link"><i class="fas fa-circle-info"></i> About</a>
+      <a href="<?= $appUrl ?>/how-it-works"      class="ne-sidebar-link"><i class="fas fa-circle-question"></i> How It Works</a>
+      <a href="<?= $appUrl ?>/faq"               class="ne-sidebar-link"><i class="fas fa-question"></i> FAQ</a>
       <hr class="ne-divider">
       <?php if ($userId): ?>
       <a href="<?= $appUrl ?>/dashboard"          class="ne-sidebar-link"><i class="fas fa-tachometer-alt"></i> My Dashboard</a>
@@ -255,15 +261,6 @@ if ($__app) {
           <li><a href="<?= $appUrl ?>/events/hyderabad">Hyderabad</a></li>
           <li><a href="<?= $appUrl ?>/events/new-delhi">Delhi</a></li>
           <li><a href="<?= $appUrl ?>/events/puducherry">Puducherry</a></li>
-        </ul>
-      </div>
-      <div class="col-6 col-lg-2">
-        <div class="ne-footer-heading">Platform</div>
-        <ul class="ne-footer-links">
-          <li><a href="<?= $appUrl ?>/about">About</a></li>
-          <li><a href="<?= $appUrl ?>/how-it-works">How It Works</a></li>
-          <li><a href="<?= $appUrl ?>/organizers">Organizer Directory</a></li>
-          <li><a href="<?= $appUrl ?>/faq">FAQ</a></li>
         </ul>
       </div>
       <div class="col-6 col-lg-2">
