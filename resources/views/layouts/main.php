@@ -116,6 +116,7 @@ if ($__app) {
         <a href="<?= $appUrl ?>/about"          class="ne-nav-link<?= $navActive('/about') ?>">About</a>
         <a href="<?= $appUrl ?>/how-it-works"   class="ne-nav-link<?= $navActive('/how-it-works') ?>">How It Works</a>
         <a href="<?= $appUrl ?>/faq"            class="ne-nav-link<?= $navActive('/faq') ?>">FAQ</a>
+        <a href="<?= $appUrl ?>/contact"        class="ne-nav-link<?= $navActive('/contact') ?>">Contact</a>
       </div>
 
       <!-- Quick Search -->
@@ -175,6 +176,7 @@ if ($__app) {
       <a href="<?= $appUrl ?>/about"             class="ne-sidebar-link"><i class="fas fa-circle-info"></i> About</a>
       <a href="<?= $appUrl ?>/how-it-works"      class="ne-sidebar-link"><i class="fas fa-circle-question"></i> How It Works</a>
       <a href="<?= $appUrl ?>/faq"               class="ne-sidebar-link"><i class="fas fa-question"></i> FAQ</a>
+      <a href="<?= $appUrl ?>/contact"           class="ne-sidebar-link"><i class="fas fa-envelope"></i> Contact Us</a>
       <hr class="ne-divider">
       <?php if ($userId): ?>
       <a href="<?= $appUrl ?>/dashboard"          class="ne-sidebar-link"><i class="fas fa-tachometer-alt"></i> My Dashboard</a>
@@ -253,22 +255,18 @@ if ($__app) {
           <li><a href="<?= $appUrl ?>/events/puducherry">Puducherry</a></li>
         </ul>
       </div>
-      <div class="col-6 col-lg-2">
-        <div class="ne-footer-heading">Legal</div>
-        <ul class="ne-footer-links">
-          <li><a href="<?= $appUrl ?>/privacy">Privacy Policy</a></li>
-          <li><a href="<?= $appUrl ?>/terms">Terms &amp; Conditions</a></li>
-          <li><a href="<?= $appUrl ?>/contact">Contact Us</a></li>
-        </ul>
-      </div>
     </div>
 
     <div class="ne-footer-bottom">
       <div class="ne-footer-copy">
         &copy; <?= date('Y') ?> N Events. Proudly built in Tamil Nadu.
       </div>
-      <div class="ne-footer-copy">
-        Designed with <span style="color:var(--brand-accent)" aria-label="love">♥</span> in Chennai
+      <div class="ne-footer-copy ne-footer-meta">
+        <a href="<?= $appUrl ?>/privacy">Privacy Policy</a>
+        <span class="ne-footer-meta-separator" aria-hidden="true">·</span>
+        <a href="<?= $appUrl ?>/terms">Terms &amp; Conditions</a>
+        <span class="ne-footer-meta-separator" aria-hidden="true">·</span>
+        <span>Designed with <span style="color:var(--brand-accent)" aria-label="love">♥</span> in Chennai</span>
       </div>
     </div>
   </div>

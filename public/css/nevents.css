@@ -1066,6 +1066,17 @@ input[type="date"].ne-form-control, input[type="time"].ne-form-control, input[ty
   font-size: 0.8rem;
 }
 
+.ne-footer-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+.ne-footer-meta a { color: var(--text-on-dark-muted); }
+.ne-footer-meta a:hover { color: var(--text-on-brand); }
+.ne-footer-meta-separator { color: var(--brand-secondary); }
+
 .ne-social-links {
   display: flex;
   gap: 0.75rem;
