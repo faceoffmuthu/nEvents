@@ -2277,6 +2277,15 @@ body.is-app {
 .ne-appbar-brand img { width: 30px; height: auto; }
 .ne-appbar-actions { flex: none; display: flex; align-items: center; }
 
+/* The native app keeps the desktop footer out of the WebView, but exposes its
+   public and legal links in a compact, safe-area-aware More panel. */
+.ne-app-menu { max-width: min(88vw, 340px); }
+body.is-app .ne-app-menu .offcanvas-header { padding-top: calc(1rem + env(safe-area-inset-top, 0px)); }
+body.is-app .ne-app-menu .offcanvas-body { padding-bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)); }
+body.is-app .ne-app-menu .ne-sidebar-link { min-height: 48px; }
+body.is-app .ne-app-menu a { color: var(--text-color); }
+body.is-app .ne-app-menu a:hover { color: var(--brand-primary); }
+
 /* Loading bar while the next screen opens */
 .ne-appbar-progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; overflow: hidden; pointer-events: none; }
 .ne-appbar-progress::before {

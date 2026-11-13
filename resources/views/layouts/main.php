@@ -100,8 +100,32 @@ if ($__app) {
     'bar_title'   => $__barTitle,
     'bar_back'    => $__isRoot ? null : $appUrl . $__parent,
     'bar_brand'   => $__path === '/',
-    'bar_actions' => $app_actions ?? '',
+    'bar_actions' => '<button type="button" class="ne-appbar-btn" data-bs-toggle="offcanvas" data-bs-target="#appMenu" aria-label="More options" aria-controls="appMenu"><i class="fas fa-bars" aria-hidden="true"></i></button>' . ($app_actions ?? ''),
 ]) ?>
+<!-- App navigation mirrors the public website links without bringing the
+     desktop navbar or footer into the native Android/iOS interface. -->
+<div class="offcanvas offcanvas-end ne-app-menu" tabindex="-1" id="appMenu" aria-labelledby="appMenuTitle">
+  <div class="offcanvas-header">
+    <h2 class="offcanvas-title" id="appMenuTitle">More</h2>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body d-flex flex-column">
+    <nav class="d-flex flex-column gap-1" aria-label="More options">
+      <a href="<?= $appUrl ?>/about" class="ne-sidebar-link"><i class="fas fa-circle-info"></i> About</a>
+      <a href="<?= $appUrl ?>/how-it-works" class="ne-sidebar-link"><i class="fas fa-circle-question"></i> How It Works</a>
+      <a href="<?= $appUrl ?>/organizers" class="ne-sidebar-link"><i class="fas fa-building"></i> Organizers</a>
+      <a href="<?= $appUrl ?>/faq" class="ne-sidebar-link"><i class="fas fa-question"></i> FAQ</a>
+      <a href="<?= $appUrl ?>/contact" class="ne-sidebar-link"><i class="fas fa-envelope"></i> Contact Us</a>
+    </nav>
+    <div class="mt-auto pt-4">
+      <div class="ne-divider mb-3"></div>
+      <div class="d-flex gap-3 flex-wrap small">
+        <a href="<?= $appUrl ?>/privacy">Privacy Policy</a>
+        <a href="<?= $appUrl ?>/terms">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </div>
+</div>
 <?php else: ?>
 <!-- ── Navigation ── -->
 <nav class="ne-navbar">
