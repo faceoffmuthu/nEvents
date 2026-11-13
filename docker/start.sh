@@ -8,19 +8,11 @@ sed -ri "s#<VirtualHost \*:[0-9]+>#<VirtualHost *:${PORT}>#" /etc/apache2/sites-
 mkdir -p /var/www/html/public/uploads/events /var/www/html/storage/logs
 chown -R www-data:www-data /var/www/html/public/uploads /var/www/html/storage
 
-# Free Render services have no interactive shell. The database can also take a
-# short time to accept connections after a deploy or restart, so retry the
-# idempotent setup before Apache begins serving traffic.
-attempt=1
-max_attempts=24
-until php /var/www/html/bin/migrate.php; do
-    if [ "$attempt" -ge "$max_attempts" ]; then
-        echo "Database setup failed after ${max_attempts} attempts."
-        exit 1
-    fi
-    echo "Database is not ready; retrying in 5 seconds (${attempt}/${max_attempts})..."
-    attempt=$((attempt + 1))
-    sleep 5
-done
+# A normal web deployment must not be held hostage by a temporarily unavailable
+# database. Set RUN_MIGRATIONS=1 in Render only when a schema/data migration is
+# actually required; the app itself still uses its configured database normally.
+if [ "${RUN_MIGRATIONS:-0}" = "1" ]; then
+    php /var/www/html/bin/migrate.php
+fi
 
 exec apache2-foreground
