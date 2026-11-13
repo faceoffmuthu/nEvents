@@ -295,6 +295,10 @@ ob_start();
             <p class="ne-ev-cta-note">Review the registration details before leaving N Events</p>
           <?php elseif ($regState === 'cancelled'): ?>
             <button type="button" class="btn-ne btn-ne-lg w-100 justify-content-center ne-btn-state is-cancelled" disabled><i class="fas fa-ban"></i> Event cancelled</button>
+          <?php elseif ($regState === 'registration_closed'): ?>
+            <button type="button" class="btn-ne btn-ne-lg w-100 justify-content-center ne-btn-state" disabled><i class="fas fa-clock"></i> Registration closed</button>
+          <?php elseif ($regState === 'no_link'): ?>
+            <button type="button" class="btn-ne btn-ne-lg w-100 justify-content-center ne-btn-state" disabled><i class="fas fa-circle-info"></i> Registration unavailable</button>
           <?php else: ?>
             <button type="button" class="btn-ne btn-ne-lg w-100 justify-content-center ne-btn-state" disabled><i class="fas fa-flag-checkered"></i> Registration closed</button>
           <?php endif; ?>
@@ -348,7 +352,7 @@ ob_start();
   <?php if ($regState === 'open'): ?>
     <a href="<?= View::e($regUrl) ?>" class="btn-ne btn-ne-primary ne-actionbar-cta">Register</a>
   <?php else: ?>
-    <button type="button" class="btn-ne ne-actionbar-cta ne-btn-state<?= $regState === 'cancelled' ? ' is-cancelled' : '' ?>" disabled><?= $regState === 'cancelled' ? 'Cancelled' : ($regState === 'registration_closed' ? 'Registration closed' : 'Closed') ?></button>
+    <button type="button" class="btn-ne ne-actionbar-cta ne-btn-state<?= $regState === 'cancelled' ? ' is-cancelled' : '' ?>" disabled><?= $regState === 'cancelled' ? 'Cancelled' : ($regState === 'registration_closed' ? 'Registration closed' : ($regState === 'no_link' ? 'Registration unavailable' : 'Closed')) ?></button>
   <?php endif; ?>
 </div>
 
