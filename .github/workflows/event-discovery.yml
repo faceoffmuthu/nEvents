@@ -1,0 +1,42 @@
+name: Import public events
+
+on:
+  schedule:
+    # The event sources refresh at most once every six hours.
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  discover:
+    name: Discover and publish events
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      APP_ENV: production
+      APP_URL: https://nevents.onrender.com
+      APP_TIMEZONE: Asia/Kolkata
+      DB_HOST: ${{ secrets.NEVENTS_DB_HOST }}
+      DB_PORT: ${{ secrets.NEVENTS_DB_PORT }}
+      DB_DATABASE: ${{ secrets.NEVENTS_DB_DATABASE }}
+      DB_USERNAME: ${{ secrets.NEVENTS_DB_USERNAME }}
+      DB_PASSWORD: ${{ secrets.NEVENTS_DB_PASSWORD }}
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: curl, mbstring, pdo_mysql, zip
+          tools: composer:v2
+
+      - name: Install production dependencies
+        run: composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Discover and publish events
+        run: php bin/scheduler.php discover-web process-candidates
