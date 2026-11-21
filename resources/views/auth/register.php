@@ -3,6 +3,13 @@ use NEvents\Core\View;
 $appUrl = rtrim($_ENV['APP_URL'] ?? '', '/');
 $errors = $errors ?? [];
 $old    = $old    ?? [];
+// Never refill the phone field with a non-phone value after a failed submit.
+// This also prevents browser autofill data (such as an email address) from
+// being rendered back into the mobile-number field.
+$oldPhone = (string) ($old['whatsapp_number'] ?? '');
+if (!preg_match('/^[0-9+().\s-]*$/', $oldPhone)) {
+    $oldPhone = '';
+}
 
 ob_start();
 ?>
@@ -31,8 +38,8 @@ ob_start();
       <?= View::csrf() ?>
 
       <div class="ne-form-group">
-        <label class="ne-form-label">Full Name</label>
-        <input type="text" name="name" class="ne-form-control <?= isset($errors['name']) ? 'is-invalid' : '' ?>"
+        <label class="ne-form-label" for="register-name">Full Name</label>
+        <input id="register-name" type="text" name="name" autocomplete="name" class="ne-form-control <?= isset($errors['name']) ? 'is-invalid' : '' ?>"
                placeholder="Your full name" value="<?= View::e($old['name'] ?? '') ?>" required>
         <?php if (isset($errors['name'])): ?>
           <div class="ne-form-error"><i class="fas fa-exclamation-circle fa-xs"></i><?= View::e($errors['name']) ?></div>
@@ -40,8 +47,8 @@ ob_start();
       </div>
 
       <div class="ne-form-group">
-        <label class="ne-form-label">Email Address</label>
-        <input type="email" name="email" class="ne-form-control <?= isset($errors['email']) ? 'is-invalid' : '' ?>"
+        <label class="ne-form-label" for="register-email">Email Address</label>
+        <input id="register-email" type="email" name="email" autocomplete="email" class="ne-form-control <?= isset($errors['email']) ? 'is-invalid' : '' ?>"
                placeholder="you@example.com" value="<?= View::e($old['email'] ?? '') ?>" required>
         <?php if (isset($errors['email'])): ?>
           <div class="ne-form-error"><i class="fas fa-exclamation-circle fa-xs"></i><?= View::e($errors['email']) ?></div>
@@ -49,10 +56,10 @@ ob_start();
       </div>
 
       <div class="ne-form-group">
-        <label class="ne-form-label">WhatsApp / Mobile Number</label>
-        <input type="tel" name="whatsapp_number" autocomplete="tel"
+        <label class="ne-form-label" for="register-whatsapp-number">WhatsApp / Mobile Number</label>
+        <input id="register-whatsapp-number" type="tel" name="whatsapp_number" autocomplete="tel-national" inputmode="tel"
                class="ne-form-control <?= isset($errors['whatsapp_number']) ? 'is-invalid' : '' ?>"
-               placeholder="98765 43210 or +44 20 7946 0958" value="<?= View::e($old['whatsapp_number'] ?? '') ?>" required>
+               placeholder="98765 43210 or +44 20 7946 0958" value="<?= View::e($oldPhone) ?>" required>
         <div class="ne-form-hint">Indian numbers can be entered without +91. Stored with your account only — we don't send WhatsApp messages.</div>
         <?php if (isset($errors['whatsapp_number'])): ?>
           <div class="ne-form-error"><i class="fas fa-exclamation-circle fa-xs"></i><?= View::e($errors['whatsapp_number']) ?></div>
